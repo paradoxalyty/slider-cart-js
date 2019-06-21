@@ -1,2 +1,1 @@
-# slider-cart-js
-<a href="https://paradoxalyty.github.io/slider-cart-js/"></a>
+<a href="https://paradoxalyty.github.io/slider-cart-js/">slider-cart-js</a>
