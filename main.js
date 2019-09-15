@@ -1,39 +1,38 @@
 /*==========================CART=============================*/
 //https://incode.pro/javascript/sozdaem-korzinu-pokupatelja-na-chistom-javascript-i-localstorage.html
 let modal = document.getElementById("modal");
-let btn = document.getElementById("checkout");
-let span = document.querySelector(".close");
+let btnOpen = document.getElementById("checkout");
+let btnClose = document.querySelector(".close");
 let animation = document.getElementById("modal");
+let count = document.querySelector("b");
 
-btn.onclick = function () {
+btnOpen.addEventListener("click", function () {
     if (modal.style.display === "block") {
         animation.classList.remove("swing-in-top-fwd");
         animation.classList.add("swing-out-top-bck");
         setTimeout(function () {
             modal.style.display = "none";
-        }, 500);
+        }, 250);
     } else {
-        //modal.style.display = "block";
         animation.classList.remove("swing-out-top-bck");
         animation.classList.add("swing-in-top-fwd");
         setTimeout(function () {
             modal.style.display = "block";
-        }, 500);
+        }, 250);
     }
-};
+});
 
-span.onclick = function () {
+btnClose.addEventListener("click", function () {
     animation.classList.remove("swing-in-top-fwd");
     animation.classList.add("swing-out-top-bck");
     setTimeout(function () {
         modal.style.display = "none";
     }, 1000);
-};
-
+});
 
 let doc = document,
     itemBox = doc.querySelectorAll('.item_box'), // блок каждого товара
-    cartCont = doc.getElementById('cart_content'); // блок вывода данных корзины
+    cartContent = doc.getElementById('cart_content'); // блок вывода данных корзины
 // Функция кроссбраузерной установка обработчика событий
 function addEvent(elem, type, handler) {
     if (elem.addEventListener) {
@@ -59,8 +58,10 @@ function setCartData(o) {
 
 // Добавляем товар в корзину
 function addToCart() {
+    /*
     this.disabled = true; // блокируем кнопку на время операции с корзиной
-    console.log(this);
+    console.log(this.disabled); // Я не понял зачем это нужно и на что оно влияет, по этому закомментил!!!
+    */
     let cartData = getCartData() || {}, // получаем данные корзины или создаём новый объект, если данных еще нет
         parentBox = this.parentNode.parentNode, // родительский элемент кнопки "Добавить в корзину"
         itemId = this.getAttribute('data-id'), // ID товара
@@ -73,7 +74,10 @@ function addToCart() {
         cartData[itemId] = [itemTitle, itemPrice, 1];
     }
     if (!setCartData(cartData)) { // Обновляем данные в LocalStorage
+        /*
         this.disabled = false; // разблокируем кнопку после обновления LS
+        // Я не понял зачем это нужно и на что оно влияет, по этому закомментил!!!
+        */
     }
     return false;
 }
@@ -81,56 +85,65 @@ function addToCart() {
 // Устанавливаем обработчик события на каждую кнопку "Добавить в корзину"
 for (let i = 0; i < itemBox.length; i++) {
     addEvent(itemBox[i].querySelector('.add_item'), 'click', addToCart);
+    addEvent(itemBox[i].querySelector('.add_item'), 'click', refreshCart);
 }
 
 // Открываем корзину со списком добавленных товаров
-function openCart() {
+function refreshCart() {
     let cartData = getCartData(), // вытаскиваем все данные корзины
         totalItems = '',
         totalCount = 0,
         totalSum = 0;
+
+    let remove = '<td><button class="remove">&#128465;</button></td>';
     // если что-то в корзине уже есть, начинаем формировать данные для вывода
     if (cartData !== null) {
-        totalItems = '<table class="shopping_list"><tr><th>Product</th><th>Price ($)</th><th>Number</th><th>Sum</th></tr>';
-        for(let items in cartData){
+        totalItems = '<table class="shopping_list"><tr><th>Product</th><th>Price ($)</th><th>Amount</th><th>Sum</th><th>Remove</th></tr>';
+        for (let items in cartData) {
             totalItems += '<tr>';
-            for(let i = 0; i < cartData[items].length; i++){
+            for (let i = 0; i < cartData[items].length; i++) {
                 totalItems += '<td>' + cartData[items][i] + '</td>';
             }
             let sum = cartData[items][1] * cartData[items][2];
             totalItems += '<td>' + sum + '</td>';
+            totalItems += remove;
             totalSum += cartData[items][1] * cartData[items][2];
             totalCount += cartData[items][2];
             totalItems += '</tr>';
         }
-        totalItems += '<tr><td><strong>Total</strong></td><td></td><td><span id="total_count">'+ totalCount +'</span> pcs.</td><td><span id="total_sum">'+ totalSum +'</span></td></tr>';
+        totalItems += '<tr><td><strong>Total</strong></td><td></td><td><btnClose id="total_count">' + totalCount + '</btnClose> pcs.</td><td><btnClose id="total_sum">' + totalSum + '</btnClose></td></tr>';
         totalItems += '</table>';
-        cartCont.innerHTML = totalItems;
+        cartContent.innerHTML = totalItems;
 
     } else {
         // если в корзине пусто, то сигнализируем об этом
-        cartCont.innerHTML = 'The cart is empty!';
+        cartContent.innerHTML = 'The cart is empty!';
     }
+
+    count.innerHTML = totalCount.toString();
     return false;
 }
 
 /* Открыть корзину */
-addEvent(doc.getElementById('checkout'), 'click', openCart);
+addEvent(doc.getElementById('checkout'), 'click', refreshCart);
 /* Очистить корзину */
 addEvent(doc.getElementById('clear_cart'), 'click', function () {
     localStorage.removeItem('cart');
-    cartCont.innerHTML = 'All removed';
+    cartContent.innerHTML = 'All removed';
+    refreshCart();
 });
 
+refreshCart();
 
-/*==========================CART==============================*/
+
+/*==========================BUTTON MORE/LESS==============================*/
 
 
 document.querySelectorAll(".btn-more").forEach(function (element) {
     element.addEventListener("click", function () {
-            //console.log(this.parentNode);
+
             let display = this.parentNode.parentNode.querySelector("p").style.display;
-            console.log(this.parentNode.parentNode);
+
             if (display === "block") {
                 this.parentNode.parentNode.querySelector("p").style.display = "none";
             } else {
@@ -142,7 +155,6 @@ document.querySelectorAll(".btn-more").forEach(function (element) {
 
 
 document.querySelectorAll(".btn-more").forEach(function (element) {
-    //console.dir(document.querySelectorAll("button"));
     element.addEventListener("click", function () {
             if (!this.name) {
                 return;
