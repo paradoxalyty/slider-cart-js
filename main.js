@@ -34,12 +34,14 @@ let itemBox = document.querySelectorAll('.item_box'), // блок каждого
     cartContent = document.getElementById('cart_content'); // блок вывода данных корзины
 // Функция кроссбраузерной установка обработчика событий
 function addEvent(elem, type, handler) {
+    elem.attachEvent = function () {
+        handler.call(elem);
+    };
+
     if (elem.addEventListener) {
         elem.addEventListener(type, handler, false);
     } else {
-        elem.attachEvent('on' + type, function () {
-            handler.call(elem);
-        });
+        elem.attachEvent('on' + type);
     }
     return false;
 }
