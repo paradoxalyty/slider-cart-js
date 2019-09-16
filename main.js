@@ -104,7 +104,6 @@ function refreshCart() { // функция называлась openCart
         totalCount = 0,
         totalSum = 0;
 
-    let wastebasket = '<td><button class="remove">&#128465;</button></td>';
     // если что-то в корзине уже есть, начинаем формировать данные для вывода
     if (cartData !== null) {
         totalItems = '<table class="shopping_list"><tr><th>Product</th><th>Price ($)</th><th>Amount</th><th>Sum</th><th>Remove</th></tr>';
@@ -115,7 +114,7 @@ function refreshCart() { // функция называлась openCart
             }
             let sum = cartData[items][1] * cartData[items][2];
             totalItems += '<td>' + sum + '</td>';
-            totalItems += wastebasket;
+            totalItems += '<td><button class="remove" data-id="' + items + '">&#128465;</button></td>';
             totalSum += cartData[items][1] * cartData[items][2];
             totalCount += cartData[items][2];
             totalItems += '</tr>';
@@ -123,7 +122,6 @@ function refreshCart() { // функция называлась openCart
         totalItems += '<tr><td><strong>Total</strong></td><td></td><td><btnClose id="total_count">' + totalCount + '</btnClose> pcs.</td><td><btnClose id="total_sum">' + totalSum + '</btnClose></td></tr>';
         totalItems += '</table>';
         cartContent.innerHTML = totalItems;
-
     } else {
         // если в корзине пусто, то сигнализируем об этом
         cartContent.innerHTML = 'The cart is empty!';
@@ -132,8 +130,31 @@ function refreshCart() { // функция называлась openCart
     return false;
 }
 
+// функция для нахождения необходимого ближайшего родительского элемента
+function closest(el, sel) {
+    if (el !== null)
+        return el.matches(sel) ? el : (el.querySelector(sel) || closest(el.parentNode, sel));
+}
+
 /* Открыть корзину */
 addEvent(document.getElementById('checkout'), 'click', refreshCart);
+
+/* Удаление из корзины */
+addEvent(document.body, 'click', function (element) {
+    if (element.target.className === 'remove') {
+        let itemId = element.target.getAttribute('data-id'),
+            cartData = getCartData();
+        if (cartData.hasOwnProperty(itemId)) {
+            let tr = closest(element.target, 'tr');
+            tr.parentNode.removeChild(tr); /* Удаляем строку товара из таблицы */
+            delete cartData[itemId]; // удаляем товар из объекта
+            setCartData(cartData); // перезаписываем измененные данные в localStorage
+        }
+    }
+    refreshCart();
+}, false);
+
+
 /* Очистить корзину */
 addEvent(document.getElementById('clear_cart'), 'click', function () {
     localStorage.removeItem('cart');
