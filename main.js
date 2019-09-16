@@ -3,19 +3,18 @@
 let modal = document.getElementById("modal");
 let btnOpen = document.getElementById("checkout");
 let btnClose = document.querySelector(".close");
-let animation = document.getElementById("modal");
 let count = document.querySelector("b");
 
 btnOpen.addEventListener("click", function () {
     if (modal.style.display === "block") {
-        animation.classList.remove("swing-in-top-fwd");
-        animation.classList.add("swing-out-top-bck");
+        modal.classList.remove("swing-in-top-fwd");
+        modal.classList.add("swing-out-top-bck");
         setTimeout(function () {
             modal.style.display = "none";
         }, 250);
     } else {
-        animation.classList.remove("swing-out-top-bck");
-        animation.classList.add("swing-in-top-fwd");
+        modal.classList.remove("swing-out-top-bck");
+        modal.classList.add("swing-in-top-fwd");
         setTimeout(function () {
             modal.style.display = "block";
         }, 250);
@@ -23,8 +22,8 @@ btnOpen.addEventListener("click", function () {
 });
 
 btnClose.addEventListener("click", function () {
-    animation.classList.remove("swing-in-top-fwd");
-    animation.classList.add("swing-out-top-bck");
+    modal.classList.remove("swing-in-top-fwd");
+    modal.classList.add("swing-out-top-bck");
     setTimeout(function () {
         modal.style.display = "none";
     }, 1000);
