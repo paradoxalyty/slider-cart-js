@@ -30,9 +30,8 @@ btnClose.addEventListener("click", function () {
     }, 1000);
 });
 
-let doc = document,
-    itemBox = doc.querySelectorAll('.item_box'), // блок каждого товара
-    cartContent = doc.getElementById('cart_content'); // блок вывода данных корзины
+let itemBox = document.querySelectorAll('.item_box'), // блок каждого товара
+    cartContent = document.getElementById('cart_content'); // блок вывода данных корзины
 // Функция кроссбраузерной установка обработчика событий
 function addEvent(elem, type, handler) {
     if (elem.addEventListener) {
@@ -95,7 +94,7 @@ function refreshCart() {
         totalCount = 0,
         totalSum = 0;
 
-    let remove = '<td><button class="remove">&#128465;</button></td>';
+    let wastebasket = '<td><button class="remove">&#128465;</button></td>';
     // если что-то в корзине уже есть, начинаем формировать данные для вывода
     if (cartData !== null) {
         totalItems = '<table class="shopping_list"><tr><th>Product</th><th>Price ($)</th><th>Amount</th><th>Sum</th><th>Remove</th></tr>';
@@ -106,7 +105,7 @@ function refreshCart() {
             }
             let sum = cartData[items][1] * cartData[items][2];
             totalItems += '<td>' + sum + '</td>';
-            totalItems += remove;
+            totalItems += wastebasket;
             totalSum += cartData[items][1] * cartData[items][2];
             totalCount += cartData[items][2];
             totalItems += '</tr>';
@@ -119,15 +118,14 @@ function refreshCart() {
         // если в корзине пусто, то сигнализируем об этом
         cartContent.innerHTML = 'The cart is empty!';
     }
-
     count.innerHTML = totalCount.toString();
     return false;
 }
 
 /* Открыть корзину */
-addEvent(doc.getElementById('checkout'), 'click', refreshCart);
+addEvent(document.getElementById('checkout'), 'click', refreshCart);
 /* Очистить корзину */
-addEvent(doc.getElementById('clear_cart'), 'click', function () {
+addEvent(document.getElementById('clear_cart'), 'click', function () {
     localStorage.removeItem('cart');
     cartContent.innerHTML = 'All removed';
     refreshCart();
