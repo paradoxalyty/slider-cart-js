@@ -75,7 +75,9 @@ function addToCart() {
     } else { // если товара в корзине еще нет, то добавляем в объект
         cartData[itemId] = [itemTitle, itemPrice, 1];
     }
-    if (!setCartData(cartData)) { // Обновляем данные в LocalStorage
+
+    // Обновляем данные в LocalStorage
+    if (!setCartData(cartData)) {
         /*
         this.disabled = false; // разблокируем кнопку после обновления LS
         // Я не понял зачем это нужно и на что оно влияет, по этому закомментил!!!
@@ -95,7 +97,8 @@ for (let i = 0; i < itemBox.length; i++) {
 }
 
 // Открываем корзину со списком добавленных товаров
-function refreshCart() {
+function refreshCart() { // функция называлась openCart
+
     let cartData = getCartData(), // вытаскиваем все данные корзины
         totalItems = '',
         totalCount = 0,
