@@ -64,6 +64,7 @@ function addToCart() {
     this.disabled = true; // блокируем кнопку на время операции с корзиной
     // Я не понял зачем это нужно и на что оно влияет, по этому закомментил!!!
     */
+
     let cartData = getCartData() || {}, // получаем данные корзины или создаём новый объект, если данных еще нет
         parentBox = this.parentNode.parentNode, // родительский элемент кнопки "Добавить в корзину"
         itemId = this.getAttribute('data-id'), // ID товара
@@ -126,6 +127,7 @@ function refreshCart() { // функция называлась openCart
         // если в корзине пусто, то сигнализируем об этом
         cartContent.innerHTML = 'The cart is empty!';
     }
+
     count.innerHTML = totalCount.toString();
     return false;
 }
