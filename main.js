@@ -30,7 +30,9 @@ btnClose.addEventListener("click", function () {
 });
 
 let itemBox = document.querySelectorAll('.item_box'), // блок каждого товара
-    cartContent = document.getElementById('cart_content'); // блок вывода данных корзины
+    cartContent = document.getElementById('cart_content'), // блок вывода данных корзины
+    message = document.querySelector('.message'); // Элемент вывода сообщения в корзине.
+
 // Функция кроссбраузерной установка обработчика событий
 function addEvent(elem, type, handler) {
     elem.attachEvent = function () {
@@ -78,6 +80,10 @@ function addToCart() {
         this.disabled = false; // разблокируем кнопку после обновления LS
         // Я не понял зачем это нужно и на что оно влияет, по этому закомментил!!!
         */
+        message.innerHTML = 'Товар добавлен в корзину.';
+        setTimeout(function () {
+            message.innerHTML = 'Продолжить покупки...';
+        }, 1000);
     }
     return false;
 }
