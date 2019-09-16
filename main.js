@@ -83,9 +83,9 @@ function addToCart() {
         this.disabled = false; // разблокируем кнопку после обновления LS
         // Я не понял зачем это нужно и на что оно влияет, по этому закомментил!!!
         */
-        message.innerHTML = 'Товар добавлен в корзину.';
+        message.innerHTML = 'Product added to cart.';
         setTimeout(function () {
-            message.innerHTML = 'Продолжить покупки...';
+            message.innerHTML = 'Continue shopping...';
         }, 1000);
     }
     return false;
