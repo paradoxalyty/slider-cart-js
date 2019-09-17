@@ -5,23 +5,22 @@
 
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     color: #998675;
 }
 
-header {
+/*=====================================CART=========================================*/
+.cart {
     position: relative;
+    display: flex;
+    flex-direction: row-reverse;
 }
 
-header > .cart {
-    position: absolute;
+button.btn-cart {
+    width: 130px;
+    height: 40px;
     right: 0;
     margin: 25px;
 }
-
-
-
-/*=====================================CART=========================================*/
 
 .modalWindow {
     position: absolute;
@@ -60,11 +59,6 @@ th {
     background: #a9a9a9;
     border-radius: 10px;
     text-align: center;
-}
-
-button.cart {
-    width: 130px;
-    height: 40px;
 }
 
 .remove {
