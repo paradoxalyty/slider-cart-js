@@ -109,16 +109,18 @@ function refreshCart() { // функция называлась openCart
     if (cartData !== null) {
         totalItems = '<table class="shopping_list"><tr><th>Product</th><th>Price ($)</th><th>Amount</th><th>Sum</th><th>Remove</th></tr>';
         for (let items in cartData) {
-            totalItems += '<tr>';
-            for (let i = 0; i < cartData[items].length; i++) {
-                totalItems += '<td>' + cartData[items][i] + '</td>';
+            if (cartData.hasOwnProperty(items)) {
+                totalItems += '<tr>';
+                for (let i = 0; i < cartData[items].length; i++) {
+                    totalItems += '<td>' + cartData[items][i] + '</td>';
+                }
+                let sum = cartData[items][1] * cartData[items][2];
+                totalItems += '<td>' + sum + '</td>';
+                totalItems += '<td><button class="remove" data-id="' + items + '">&#128465;</button></td>';
+                totalSum += cartData[items][1] * cartData[items][2];
+                totalCount += cartData[items][2];
+                totalItems += '</tr>';
             }
-            let sum = cartData[items][1] * cartData[items][2];
-            totalItems += '<td>' + sum + '</td>';
-            totalItems += '<td><button class="remove" data-id="' + items + '">&#128465;</button></td>';
-            totalSum += cartData[items][1] * cartData[items][2];
-            totalCount += cartData[items][2];
-            totalItems += '</tr>';
         }
         totalItems += '<tr><td><strong>Total</strong></td><td></td><td><btnClose id="total_count">' + totalCount + '</btnClose> pcs.</td><td><btnClose id="total_sum">' + totalSum + '</btnClose></td></tr>';
         totalItems += '</table>';
