@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>cart+slider</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="images/favicon.png" type="image/png">
@@ -13,84 +13,85 @@
 <header></header>
 
 <main>
-
-    <section class="cart">
-        <button id="checkout" class="btn btn-cart">Open Cart (<b>0</b>)</button>
-        <div id="modal" class="modalWindow">
-            <!--https://incode.pro/javascript/sozdaem-korzinu-pokupatelja-na-chistom-javascript-i-localstorage.html-->
-            <div id="cart_content" class="modalBox"></div>
-            <p class="message"></p>
-            <div class="footer">
-                <button id="clear_cart" class="btn clear">clear all</button>
-                <button class="btn close">close</button>
-            </div>
-        </div>
-    </section>
-
-    <section class="catalog">
-        <h1>Catalog</h1>
-
-        <div class="products">
-            <div class="item_box">
-                <h2 class="item_title">html</h2>
-                <p id="html" class="surprise">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Accusantium cumque dignissimos distinctio ex, quia temporibus? Aliquam aliquid
-                    amet at corporis dolores ducimus enim error exercitationem.</p>
-                <img class="img1" src="images/html.jpg" alt="products photo" width="280" height="150">
-                <p>Price: <span class="item_price">50</span>$</p>
-                <div class="wrapper">
-                    <button id="btnHTML" class="btn btn-more" name="less">more</button>
-                    <button class="btn add_item" data-id="1">Add to Cart</button>
+    <article>
+        <section class="cart">
+            <button id="checkout" class="btn btn-cart">Open Cart (<b>0</b>)</button>
+            <div id="modal" class="modalWindow">
+                <!--https://incode.pro/javascript/sozdaem-korzinu-pokupatelja-na-chistom-javascript-i-localstorage.html-->
+                <div id="cart_content" class="modalBox"></div>
+                <p class="message"></p>
+                <div class="footer">
+                    <button id="clear_cart" class="btn clear">clear all</button>
+                    <button class="btn close">close</button>
                 </div>
             </div>
-            <div class="item_box">
-                <h2 class="item_title">css</h2>
-                <p id="css" class="surprise">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Accusantium cumque dignissimos distinctio ex, quia temporibus? Aliquam aliquid
-                    amet at corporis dolores ducimus enim error exercitationem.</p>
-                <img class="img2" src="images/css.jpg" alt="products photo" width="280" height="150">
-                <p>Price: <span class="item_price">75</span>$</p>
-                <div class="wrapper">
-                    <button id="btnCSS" class="btn btn-more" name="less">more</button>
-                    <button class="btn add_item" data-id="2">Add to Cart</button>
-                </div>
-            </div>
-            <div class="item_box">
-                <h2 class="item_title">js</h2>
-                <p id="js" class="surprise">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Accusantium cumque dignissimos distinctio ex, quia temporibus? Aliquam aliquid
-                    amet at corporis dolores ducimus enim error exercitationem.</p>
-                <img class="img3" src="images/js.png" alt="products photo" width="280" height="150">
-                <p>Price: <span class="item_price">100</span>$</p>
-                <div class="wrapper">
-                    <button id="btnJS" class="btn btn-more" name="less">more</button>
-                    <button class="btn add_item" data-id="3">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="slider">
-        <!--
-    * Слайдер для сайта на CSS и JavaScript (https://itchief.ru/javascript/slider-on-css-and-javascript)
-    * chiefSlider (https://itchief.ru/lessons/php/feedback-form-for-website)
-    * Copyright 2018 Alexander Maltsev
-    * Licensed under MIT (https://github.com/itchief/feedback-form/blob/master/LICENSE)
-    -->
-        <div class="slider__wrapper">
-            <div class="slider__item">
-                <img src="images/html.jpg" alt="html photo">
+        <section class="catalog">
+            <h1>Catalog</h1>
+
+            <div class="products">
+                <div class="item_box">
+                    <h2 class="item_title">html</h2>
+                    <p id="html" class="surprise">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        Accusantium cumque dignissimos distinctio ex, quia temporibus? Aliquam aliquid
+                        amet at corporis dolores ducimus enim error exercitationem.</p>
+                    <img class="img1" src="images/html.jpg" alt="products photo" width="280" height="150">
+                    <p>Price: <span class="item_price">50</span>$</p>
+                    <div class="wrapper">
+                        <button id="btnHTML" class="btn btn-more" name="less">more</button>
+                        <button class="btn add_item" data-id="1">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="item_box">
+                    <h2 class="item_title">css</h2>
+                    <p id="css" class="surprise">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        Accusantium cumque dignissimos distinctio ex, quia temporibus? Aliquam aliquid
+                        amet at corporis dolores ducimus enim error exercitationem.</p>
+                    <img class="img2" src="images/css.jpg" alt="products photo" width="280" height="150">
+                    <p>Price: <span class="item_price">75</span>$</p>
+                    <div class="wrapper">
+                        <button id="btnCSS" class="btn btn-more" name="less">more</button>
+                        <button class="btn add_item" data-id="2">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="item_box">
+                    <h2 class="item_title">js</h2>
+                    <p id="js" class="surprise">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        Accusantium cumque dignissimos distinctio ex, quia temporibus? Aliquam aliquid
+                        amet at corporis dolores ducimus enim error exercitationem.</p>
+                    <img class="img3" src="images/js.png" alt="products photo" width="280" height="150">
+                    <p>Price: <span class="item_price">100</span>$</p>
+                    <div class="wrapper">
+                        <button id="btnJS" class="btn btn-more" name="less">more</button>
+                        <button class="btn add_item" data-id="3">Add to Cart</button>
+                    </div>
+                </div>
             </div>
-            <div class="slider__item">
-                <img src="images/css.jpg" alt="css photo">
+        </section>
+
+        <section class="slider">
+            <!--
+        * Слайдер для сайта на CSS и JavaScript (https://itchief.ru/javascript/slider-on-css-and-javascript)
+        * chiefSlider (https://itchief.ru/lessons/php/feedback-form-for-website)
+        * Copyright 2018 Alexander Maltsev
+        * Licensed under MIT (https://github.com/itchief/feedback-form/blob/master/LICENSE)
+        -->
+            <div class="slider__wrapper">
+                <div class="slider__item">
+                    <img src="images/html.jpg" alt="html photo">
+                </div>
+                <div class="slider__item">
+                    <img src="images/css.jpg" alt="css photo">
+                </div>
+                <div class="slider__item">
+                    <img src="images/js.png" alt="js photo">
+                </div>
             </div>
-            <div class="slider__item">
-                <img src="images/js.png" alt="js photo">
-            </div>
-        </div>
-        <a class="slider__control slider__control_left" href="#" role="button"></a>
-        <a class="slider__control slider__control_right slider__control_show" href="#" role="button"></a>
-    </section>
+            <a class="slider__control slider__control_left" href="#" role="button"></a>
+            <a class="slider__control slider__control_right slider__control_show" href="#" role="button"></a>
+        </section>
+    </article>
 </main>
 
 <footer>
