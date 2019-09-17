@@ -143,7 +143,15 @@ function closest(el, sel) {
 /* Открыть корзину */
 addEvent(document.getElementById('checkout'), 'click', refreshCart);
 
-/* Удаление из корзины */
+/* Очистить корзину */
+addEvent(document.getElementById('clear_cart'), 'click', clearCart);
+function clearCart() {
+    localStorage.removeItem('cart');
+    cartContent.innerHTML = 'All removed';
+    refreshCart();
+}
+
+/* Удаление товара из корзины */
 addEvent(document.body, 'click', function (element) {
     if (element.target.className === 'remove') {
         let itemId = element.target.getAttribute('data-id'),
@@ -154,17 +162,24 @@ addEvent(document.body, 'click', function (element) {
             delete cartData[itemId]; // удаляем товар из объекта
             setCartData(cartData); // перезаписываем измененные данные в localStorage
         }
+        isEmpty(cartData); //Проверяем пустой ли объект.
     }
     refreshCart();
 }, false);
 
+/*Функция проверяет объект cartData на наличие свойств,
+если объект пустой вызывает функцию полной очистки корзины.*/
+function isEmpty(obj) {
+    for (let key in obj) {
+        // если тело цикла начнет выполняться - значит в объекте есть свойства
+        if (obj.hasOwnProperty(key)) {
+            return false;
+        }
+    }
+    clearCart();
+    return true;
+}
 
-/* Очистить корзину */
-addEvent(document.getElementById('clear_cart'), 'click', function () {
-    localStorage.removeItem('cart');
-    cartContent.innerHTML = 'All removed';
-    refreshCart();
-});
 
 refreshCart();
 
