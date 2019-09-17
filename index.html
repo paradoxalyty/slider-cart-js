@@ -14,7 +14,7 @@
 
 <main>
 
-    <div class="cart">
+    <section class="cart">
         <button id="checkout" class="btn btn-cart">Open Cart (<b>0</b>)</button>
         <div id="modal" class="modalWindow">
             <!--https://incode.pro/javascript/sozdaem-korzinu-pokupatelja-na-chistom-javascript-i-localstorage.html-->
@@ -25,56 +25,58 @@
                 <button class="btn close">close</button>
             </div>
         </div>
-    </div>
+    </section>
 
-    <h1>Catalog</h1>
+    <section class="catalog">
+        <h1>Catalog</h1>
 
-    <div class="products">
-        <div class="item_box">
-            <h2 class="item_title">html</h2>
-            <p id="html" class="surprise">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Accusantium cumque dignissimos distinctio ex, quia temporibus? Aliquam aliquid
-                amet at corporis dolores ducimus enim error exercitationem.</p>
-            <img class="img1" src="images/html.jpg" alt="products photo" width="280" height="150">
-            <p>Price: <span class="item_price">50</span>$</p>
-            <div class="wrapper">
-                <button id="btnHTML" class="btn btn-more" name="less">more</button>
-                <button class="btn add_item" data-id="1">Add to Cart</button>
+        <div class="products">
+            <div class="item_box">
+                <h2 class="item_title">html</h2>
+                <p id="html" class="surprise">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Accusantium cumque dignissimos distinctio ex, quia temporibus? Aliquam aliquid
+                    amet at corporis dolores ducimus enim error exercitationem.</p>
+                <img class="img1" src="images/html.jpg" alt="products photo" width="280" height="150">
+                <p>Price: <span class="item_price">50</span>$</p>
+                <div class="wrapper">
+                    <button id="btnHTML" class="btn btn-more" name="less">more</button>
+                    <button class="btn add_item" data-id="1">Add to Cart</button>
+                </div>
+            </div>
+            <div class="item_box">
+                <h2 class="item_title">css</h2>
+                <p id="css" class="surprise">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Accusantium cumque dignissimos distinctio ex, quia temporibus? Aliquam aliquid
+                    amet at corporis dolores ducimus enim error exercitationem.</p>
+                <img class="img2" src="images/css.jpg" alt="products photo" width="280" height="150">
+                <p>Price: <span class="item_price">75</span>$</p>
+                <div class="wrapper">
+                    <button id="btnCSS" class="btn btn-more" name="less">more</button>
+                    <button class="btn add_item" data-id="2">Add to Cart</button>
+                </div>
+            </div>
+            <div class="item_box">
+                <h2 class="item_title">js</h2>
+                <p id="js" class="surprise">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Accusantium cumque dignissimos distinctio ex, quia temporibus? Aliquam aliquid
+                    amet at corporis dolores ducimus enim error exercitationem.</p>
+                <img class="img3" src="images/js.png" alt="products photo" width="280" height="150">
+                <p>Price: <span class="item_price">100</span>$</p>
+                <div class="wrapper">
+                    <button id="btnJS" class="btn btn-more" name="less">more</button>
+                    <button class="btn add_item" data-id="3">Add to Cart</button>
+                </div>
             </div>
         </div>
-        <div class="item_box">
-            <h2 class="item_title">css</h2>
-            <p id="css" class="surprise">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Accusantium cumque dignissimos distinctio ex, quia temporibus? Aliquam aliquid
-                amet at corporis dolores ducimus enim error exercitationem.</p>
-            <img class="img2" src="images/css.jpg" alt="products photo" width="280" height="150">
-            <p>Price: <span class="item_price">75</span>$</p>
-            <div class="wrapper">
-                <button id="btnCSS" class="btn btn-more" name="less">more</button>
-                <button class="btn add_item" data-id="2">Add to Cart</button>
-            </div>
-        </div>
-        <div class="item_box">
-            <h2 class="item_title">js</h2>
-            <p id="js" class="surprise">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Accusantium cumque dignissimos distinctio ex, quia temporibus? Aliquam aliquid
-                amet at corporis dolores ducimus enim error exercitationem.</p>
-            <img class="img3" src="images/js.png" alt="products photo" width="280" height="150">
-            <p>Price: <span class="item_price">100</span>$</p>
-            <div class="wrapper">
-                <button id="btnJS" class="btn btn-more" name="less">more</button>
-                <button class="btn add_item" data-id="3">Add to Cart</button>
-            </div>
-        </div>
-    </div>
+    </section>
 
-    <!--
-        * Слайдер для сайта на CSS и JavaScript (https://itchief.ru/javascript/slider-on-css-and-javascript)
-        * chiefSlider (https://itchief.ru/lessons/php/feedback-form-for-website)
-        * Copyright 2018 Alexander Maltsev
-        * Licensed under MIT (https://github.com/itchief/feedback-form/blob/master/LICENSE)
-        -->
-    <div class="slider">
+    <section class="slider">
+        <!--
+    * Слайдер для сайта на CSS и JavaScript (https://itchief.ru/javascript/slider-on-css-and-javascript)
+    * chiefSlider (https://itchief.ru/lessons/php/feedback-form-for-website)
+    * Copyright 2018 Alexander Maltsev
+    * Licensed under MIT (https://github.com/itchief/feedback-form/blob/master/LICENSE)
+    -->
         <div class="slider__wrapper">
             <div class="slider__item">
                 <img src="images/html.jpg" alt="html photo">
@@ -88,7 +90,7 @@
         </div>
         <a class="slider__control slider__control_left" href="#" role="button"></a>
         <a class="slider__control slider__control_right slider__control_show" href="#" role="button"></a>
-    </div>
+    </section>
 </main>
 
 <footer>
