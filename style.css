@@ -18,7 +18,6 @@ button.btn-cart {
     width: 130px;
     height: 40px;
     right: 0;
-    margin: 25px;
 }
 
 .modalWindow {
@@ -165,7 +164,6 @@ th {
 }
 
 h1 {
-    padding-bottom: 20px;
 }
 
 .description {
@@ -212,6 +210,7 @@ h2 {
 }
 
 .products img {
+    padding: 0 0 15px 0;
     display: block;
     width: 280px;
 }
@@ -360,6 +359,10 @@ footer {
 
 /* Medium Devices, Desktops */
 @media only screen and (max-width: 992px) {
+    h1 {
+        padding: 20px 0;
+    }
+
     .products {
         flex-direction: column;
         align-items: center;
