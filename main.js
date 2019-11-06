@@ -202,7 +202,7 @@ document.querySelectorAll(".btn-more").forEach(function (element) {
 });
 
 
-document.querySelectorAll(".btn-more").forEach(function (element) {
+document.querySelectorAll(".btn").forEach(function (element) {
     element.addEventListener("click", function () {
             if (!this.name) {
                 return;
